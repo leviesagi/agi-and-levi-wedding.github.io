@@ -280,3 +280,261 @@ img::after {
   color: #999;
   text-align: center;
 }
+
+/* ===== DARK MODE SUPPORT ===== */
+@media (prefers-color-scheme: dark) {
+  
+  /* === Core Elements === */
+  body {
+    background-color: #1a1a1a !important;
+    color: #e0e0e0 !important;
+  }
+  
+  /* === Text Colors === */
+  p {
+    color: #c0c0c0 !important;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    color: #ffffff !important;
+  }
+  
+  /* === Navigation === */
+  .fixed {
+    background-color: rgba(20, 20, 20, 0.95) !important;
+  }
+  
+  /* === Sections === */
+  section.intro,
+  section.features-extra,
+  section.rsvp {
+    background: #1a1a1a !important;
+  }
+  
+  section.features,
+  section.events,
+  section.blog {
+    background: #2d2d2d !important;
+  }
+  
+  /* === Hero Section === */
+  .hero::before {
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), transparent) !important;
+  }
+  
+  /* === Forms === */
+  .rsvp .rsvp-form .form-input-group {
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+  }
+  
+  .rsvp .rsvp-form .form-input-group input {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    border: none !important;
+  }
+  
+  .rsvp .rsvp-form .form-input-group input::placeholder {
+    color: #888888 !important;
+  }
+  
+  .rsvp .rsvp-form .form-input-group label {
+    color: #c0c0c0 !important;
+  }
+  
+  .rsvp .rsvp-form .form-input-group i:after {
+    border-right-color: #404040 !important;
+  }
+  
+  .rsvp .rsvp-form .form-group {
+    background-color: rgba(45, 45, 45, 0.5) !important;
+  }
+  
+  .rsvp .rsvp-form .additional-info {
+    color: #a0a0a0 !important;
+  }
+  
+  /* === Buttons === */
+  .btn {
+    color: #ffffff !important;
+    border-color: #89a450 !important;
+  }
+  
+  .btn:hover,
+  .btn:focus {
+    background-color: #89a450 !important;
+    border-color: #89a450 !important;
+    color: #ffffff !important;
+  }
+  
+  .btn-white {
+    color: #ffffff !important;
+    border-color: #ffffff !important;
+  }
+  
+  .btn-white:hover,
+  .btn-white:focus {
+    background-color: #ffffff !important;
+    color: #1a1a1a !important;
+  }
+  
+  /* === Modal === */
+  .modal-content {
+    background-color: #2d2d2d !important;
+    border: 1px solid #404040 !important;
+  }
+  
+  .modal-body {
+    color: #e0e0e0 !important;
+  }
+  
+  .modal-body h3 {
+    color: #ffffff !important;
+  }
+  
+  .close {
+    color: #ffffff !important;
+    opacity: 0.8 !important;
+  }
+  
+  .close:hover {
+    opacity: 1 !important;
+  }
+  
+  /* === Alerts === */
+  .alert {
+    background-color: #2d2d2d !important;
+    border-color: #404040 !important;
+    color: #e0e0e0 !important;
+  }
+  
+  .alert-info {
+    background-color: #1a3b5c !important;
+    border-color: #2980b9 !important;
+    color: #ffffff !important;
+  }
+  
+  .alert-danger {
+    background-color: #5c1a1a !important;
+    border-color: #e74c3c !important;
+    color: #ffffff !important;
+  }
+  
+  /* === Footer === */
+  footer {
+    background-color: #1a1a1a !important;
+  }
+  
+  footer .content {
+    border-top-color: #404040 !important;
+  }
+  
+  footer .to-top-wrapper {
+    background: #2d2d2d !important;
+    border-color: #404040 !important;
+  }
+  
+  /* === Borders and Lines === */
+  .section-border {
+    border-bottom-color: #404040 !important;
+  }
+  
+  .hr {
+    border-color: #404040 !important;
+  }
+  
+  /* === Tooltips === */
+  .tooltip-inner {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+  }
+  
+  /* === Events Timeline === */
+  .events .time {
+    color: #a0a0a0 !important;
+  }
+  
+  /* === Photo Gallery === */
+  #eng-pics .img-wrap .overlay {
+    background-color: rgba(0, 0, 0, 0.7) !important;
+  }
+  
+  /* === Maps === */
+  #map-content {
+    background: #2d2d2d !important;
+    color: #e0e0e0 !important;
+  }
+  
+  #btn-show-content {
+    background: #2d2d2d !important;
+    color: #e0e0e0 !important;
+  }
+  
+  /* === Video Background === */
+  #video-content {
+    background: rgba(0, 0, 0, 0.8) !important;
+  }
+  
+  /* === Dress Code Modal === */
+  #dc-modal .modal-content {
+    background-color: #2d2d2d !important;
+  }
+  
+  #dc-modal .modal-body h3,
+  #dc-modal .modal-body h5 {
+    color: #ffffff !important;
+  }
+  
+  #dc-modal .modal-body p {
+    color: #c0c0c0 !important;
+  }
+  
+  /* === Links === */
+  a {
+    color: #9bc468 !important;
+  }
+  
+  a:hover,
+  a:focus {
+    color: #b8d485 !important;
+  }
+  
+  /* === Form Checkboxes === */
+  input[type="checkbox"] {
+    accent-color: #89a450 !important;
+  }
+  
+  /* === RSVP Success Modal === */
+  #rsvp-modal .modal-content {
+    background-color: #2d2d2d !important;
+  }
+  
+  #rsvp-modal h3 {
+    color: #ffffff !important;
+  }
+  
+  #rsvp-modal p {
+    color: #c0c0c0 !important;
+  }
+  
+  /* === Calendar Widget === */
+  .ouical-calendar {
+    background-color: #2d2d2d !important;
+    color: #ffffff !important;
+    border: 1px solid #404040 !important;
+  }
+  
+  /* === Ensure proper contrast for critical elements === */
+  .fa {
+    color: inherit !important;
+  }
+  
+  .rsvp .rsvp-form .form-input-group i {
+    color: #9bc468 !important;
+  }
+  
+  /* === Additional info text === */
+  .additional-info b {
+    color: #ffffff !important;
+  }
+}
