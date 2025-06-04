@@ -184,7 +184,7 @@ $(document).ready(function () {
         },
         data: {
             // Event title
-            title: "Ági & Levi Esküvúje",
+            title: "Ági & Levi Esküvője",
 
             // Event start date
             start: new Date('Sep 20, 2025 14:00'),
@@ -252,6 +252,20 @@ $(document).ready(function () {
                                 7 év alatt van
                             </label>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 col-sm-6">
+                        <div class="form-input-group">
+                            <i class="fa fa-bus"></i>
+                            <label>
+                                <input type="checkbox" name="guest_need_transfer_${guestCounter}" value=true>
+                                Transzfert igénylek
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <!-- Empty column for spacing -->
                     </div>
                 </div>
                         <div class="row">
@@ -323,6 +337,7 @@ $(document).ready(function () {
                 main_guest_name: '',
                 under_seven: formData.get('under_seven') === 'true',
                 need_accommodation: formData.get('need_accommodation') === 'true',
+                need_transfer: formData.get('need_transfer') === 'true',
                 is_additional_guest: false,
                 gluten: formData.get('gluten') === 'true',
                 lactose: formData.get('lactose') === 'true',
@@ -339,6 +354,7 @@ $(document).ready(function () {
                         main_guest_name: mainGuest.name,
                         under_seven: formData.get(`guest_under_seven_${i}`) === 'true',
                         need_accommodation: formData.get(`guest_need_accommodation_${i}`) === 'true',
+                        need_transfer: formData.get(`guest_need_transfer_${i}`) === 'true',
                         is_additional_guest: true,
                         gluten: formData.get(`guest_gluten_${i}`) === 'true',
                         lactose: formData.get(`guest_lactose_${i}`) === 'true',

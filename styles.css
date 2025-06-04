@@ -40,24 +40,35 @@ body::before {
   display: inline-block !important;
 }
 
-/* Ensure FontAwesome loads even if CDN fails */
-.fa:before {
-  content: attr(data-fa-fallback) !important;
-}
+/* FontAwesome icon definitions - these take priority when FontAwesome loads */
+.fa-search:before { content: "\f002"; }
+.fa-envelope:before { content: "\f0e0"; }
+.fa-user:before { content: "\f007"; }
+.fa-heart:before { content: "\f004"; }
+.fa-angle-up:before { content: "\f106"; }
+.fa-map-marker:before { content: "\f041"; }
+.fa-barcode:before { content: "\f02a"; }
+.fa-bed:before { content: "\f236"; }
+.fa-child:before { content: "\f1ae"; }
+.fa-pencil:before { content: "\f040"; }
+.fa-key:before { content: "\f084"; }
+.fa-calendar:before { content: "\f073"; }
+.fa-bus:before { content: "\f207"; }
 
-/* Specific icon fallbacks for critical icons */
-.fa-search:before { content: "🔍" !important; }
-.fa-envelope:before { content: "✉" !important; }
-.fa-user:before { content: "👤" !important; }
-.fa-heart:before { content: "❤" !important; }
-.fa-angle-up:before { content: "▲" !important; }
-.fa-map-marker:before { content: "📍" !important; }
-.fa-barcode:before { content: "|||" !important; }
-.fa-bed:before { content: "🛏" !important; }
-.fa-child:before { content: "👶" !important; }
-.fa-pencil:before { content: "✏" !important; }
-.fa-key:before { content: "🔑" !important; }
-.fa-calendar:before { content: "📅" !important; }
+/* Emoji fallbacks - only when FontAwesome fails to load */
+.fa.fa-search.fontawesome-fallback:before { content: "🔍" !important; }
+.fa.fa-envelope.fontawesome-fallback:before { content: "✉" !important; }
+.fa.fa-user.fontawesome-fallback:before { content: "👤" !important; }
+.fa.fa-heart.fontawesome-fallback:before { content: "❤" !important; }
+.fa.fa-angle-up.fontawesome-fallback:before { content: "▲" !important; }
+.fa.fa-map-marker.fontawesome-fallback:before { content: "📍" !important; }
+.fa.fa-barcode.fontawesome-fallback:before { content: "|||" !important; }
+.fa.fa-bed.fontawesome-fallback:before { content: "🛏" !important; }
+.fa.fa-child.fontawesome-fallback:before { content: "👶" !important; }
+.fa.fa-pencil.fontawesome-fallback:before { content: "✏" !important; }
+.fa.fa-key.fontawesome-fallback:before { content: "🔑" !important; }
+.fa.fa-calendar.fontawesome-fallback:before { content: "📅" !important; }
+.fa.fa-bus.fontawesome-fallback:before { content: "🚌" !important; }
 
 /* ===== UNIVERSAL IMAGE OPTIMIZATION ===== */
 img {
