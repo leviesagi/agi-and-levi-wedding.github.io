@@ -16,3 +16,256 @@ body::before {
   border-bottom: 2px solid black;
   content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import \"partials/colors\";\a   \2502          ^^^^^^^^^^^^^^^^^\a   \2575 \a   sass/partials/_typography.scss 2:9  @import\a   sass/styles.scss 7:9                root stylesheet";
 }
+
+/* Wedding Website Main Styles */
+
+/* Import compiled styles */
+@import url("css/styles.min.css");
+
+/* Wedding Website - Universal Browser & Device Compatibility */
+
+/* ===== FONTAWESOME ICON FIXES FOR ALL BROWSERS ===== */
+.fa {
+  font-family: FontAwesome, "Font Awesome 5 Free", "Font Awesome 5 Pro", "FontAwesome" !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  line-height: 1 !important;
+  speak: none !important;
+  text-rendering: auto !important;
+  text-transform: none !important;
+  vertical-align: baseline !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+  display: inline-block !important;
+}
+
+/* Ensure FontAwesome loads even if CDN fails */
+.fa:before {
+  content: attr(data-fa-fallback) !important;
+}
+
+/* Specific icon fallbacks for critical icons */
+.fa-search:before { content: "🔍" !important; }
+.fa-envelope:before { content: "✉" !important; }
+.fa-user:before { content: "👤" !important; }
+.fa-heart:before { content: "❤" !important; }
+.fa-angle-up:before { content: "▲" !important; }
+.fa-map-marker:before { content: "📍" !important; }
+.fa-barcode:before { content: "|||" !important; }
+.fa-bed:before { content: "🛏" !important; }
+.fa-child:before { content: "👶" !important; }
+.fa-pencil:before { content: "✏" !important; }
+.fa-key:before { content: "🔑" !important; }
+.fa-calendar:before { content: "📅" !important; }
+
+/* ===== UNIVERSAL IMAGE OPTIMIZATION ===== */
+img {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+  /* Safari & WebKit optimizations */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+  /* Image rendering optimizations */
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  /* Force hardware acceleration */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  /* Prevent layout shifts */
+  font-size: 0;
+}
+
+/* Force inline images to display properly */
+img[style*="display: inline"] {
+  display: inline-block !important;
+}
+
+/* ===== PORTRAIT IMAGES OPTIMIZATION ===== */
+img[src*="portrait"], 
+img[src*="levi_portrait_low.png"], 
+img[src*="agi_portrait.png"] {
+  /* Enhanced Safari/iOS compatibility */
+  -webkit-transform: translate3d(0, 0, 0) !important;
+  transform: translate3d(0, 0, 0) !important;
+  /* Prevent image corruption on iOS */
+  -webkit-background-clip: padding-box;
+  background-clip: padding-box;
+  /* Force image to load properly */
+  object-fit: cover;
+  object-position: center;
+}
+
+/* ===== ENGAGEMENT PHOTOS FIXES ===== */
+#eng-pics img {
+  width: 100% !important;
+  height: auto !important;
+  /* Prevent image stretching */
+  object-fit: cover;
+  object-position: center;
+  /* Enhanced transition support */
+  -webkit-transition: all 300ms ease-in-out !important;
+  -moz-transition: all 300ms ease-in-out !important;
+  -ms-transition: all 300ms ease-in-out !important;
+  -o-transition: all 300ms ease-in-out !important;
+  transition: all 300ms ease-in-out !important;
+}
+
+/* ===== BACKGROUND IMAGE FIXES ===== */
+.hero {
+  background-size: cover !important;
+  background-position: center center !important;
+  background-repeat: no-repeat !important;
+  /* Cross-browser background-size support */
+  -webkit-background-size: cover !important;
+  -moz-background-size: cover !important;
+  -o-background-size: cover !important;
+  /* Force repaint on scroll (Safari fix) */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+/* ===== RESPONSIVE IMAGE FIXES ===== */
+@media (max-width: 768px) {
+  .col-sm-4.col-sm-push-2 img,
+  .col-xs-6 img {
+    width: 100% !important;
+    max-height: 300px !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    /* iOS Safari fixes */
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+  }
+}
+
+@media (max-width: 480px) {
+  img[src*="portrait"] {
+    max-height: 250px !important;
+  }
+}
+
+/* ===== SAFARI-SPECIFIC FIXES ===== */
+@media not all and (min-resolution:.001dpcm) { 
+  @supports (-webkit-appearance:none) {
+    img {
+      -webkit-transform: translateZ(0) !important;
+      transform: translateZ(0) !important;
+      /* Force Safari to recognize the image */
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+    
+    /* Safari portrait fix */
+    img[src*="levi_portrait_low.png"],
+    img[src*="agi_portrait.png"] {
+      will-change: transform !important;
+      -webkit-backface-visibility: hidden !important;
+      backface-visibility: hidden !important;
+    }
+  }
+}
+
+/* ===== INTERNET EXPLORER FIXES ===== */
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+  img {
+    -ms-interpolation-mode: bicubic;
+  }
+  
+  .fa {
+    /* IE FontAwesome fallback */
+    font-family: FontAwesome !important;
+  }
+}
+
+/* ===== FIREFOX FIXES ===== */
+@-moz-document url-prefix() {
+  img {
+    image-rendering: -moz-crisp-edges;
+  }
+}
+
+/* ===== CHROME/WEBKIT ICON FIXES ===== */
+@supports (-webkit-appearance: none) {
+  .fa {
+    -webkit-font-feature-settings: normal !important;
+    font-feature-settings: normal !important;
+  }
+}
+
+/* ===== HIGH DPI/RETINA DISPLAY SUPPORT ===== */
+@media only screen and (-webkit-min-device-pixel-ratio: 2),
+       only screen and (min--moz-device-pixel-ratio: 2),
+       only screen and (-o-min-device-pixel-ratio: 2/1),
+       only screen and (min-device-pixel-ratio: 2),
+       only screen and (min-resolution: 192dpi),
+       only screen and (min-resolution: 2dppx) {
+  img {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: optimize-contrast;
+    -ms-interpolation-mode: nearest-neighbor;
+  }
+}
+
+/* ===== PRINT MEDIA FIXES ===== */
+@media print {
+  img {
+    -webkit-print-color-adjust: exact !important;
+    color-adjust: exact !important;
+  }
+  
+  .fa:before {
+    content: none !important;
+  }
+}
+
+/* ===== LOGO SPECIFIC FIXES ===== */
+.logo img {
+  height: auto !important;
+  max-height: 19px !important;
+  width: auto !important;
+  /* Prevent logo distortion */
+  object-fit: contain !important;
+}
+
+/* ===== LOADING STATE FOR IMAGES ===== */
+img[data-loading] {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+img[data-loaded] {
+  opacity: 1;
+}
+
+/* ===== FALLBACK FOR BROKEN IMAGES ===== */
+img::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #f8f9fd;
+  border: 1px solid #e6e9ea;
+}
+
+img::after {
+  content: "📷 Kép betöltése...";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 12px;
+  color: #999;
+  text-align: center;
+}

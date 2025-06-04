@@ -14,47 +14,135 @@
     <title>Ági ❤️ Levi - 2025.09.20.</title>
     <meta name="description" content="Szeretettel meghívunk titeket a nagy napunkra.">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-    <meta name="theme-color" content="#ffffff">
+    <meta name="theme-color" content="#89a450">
+    <meta name="msapplication-TileColor" content="#89a450">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta property="og:title" content="Ági & Levi esküvő">
     <meta property="og:description" content="Szeretettel meghívunk titeket a nagy napunkra.">
     <meta property="og:type" content="website">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <meta property="og:image" content="/apple-touch-icon.png">
+    
+    <!-- Comprehensive Favicon Support for All Browsers and Devices -->
+    <!-- Standard favicon for IE and old browsers -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- Modern favicon support -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Á+L" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/apple-touch-icon.png" color="#5bbad5">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#89a450">
+    
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/android-chrome-512x512.png">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-TileImage" content="/mstile-150x150.png">
+    <meta name="msapplication-config" content="/browserconfig.xml">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="Á+L">
 
     <script>
-        // load css files from CDN if local node_modules fail
+        // Enhanced CSS loading with multiple fallbacks
         function loadCssFromCDN(css) {
-            // create new link tag
             const link = document.createElement('link');
+            link.rel = 'stylesheet';
+            link.crossOrigin = 'anonymous';
+            
             if (css === 'animate.css') {
                 link.href = 'https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css';
+                link.integrity = 'sha512-2P8ZV7rAUZZU+WBU+ViEZs+Dh3QNdKpMCNYRnCQyiUfvEV2PqG5bPX44VVW6cJ7UgNwNWLMZEyj9VaB9rlTsw==';
             } else if (css === 'font-awesome.css') {
-                link.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css';
+                // Try multiple CDN sources for FontAwesome
+                const cdnSources = [
+                    {
+                        href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css',
+                        integrity: 'sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=='
+                    },
+                    {
+                        href: 'https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css',
+                        integrity: 'sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN'
+                    },
+                    {
+                        href: 'https://use.fontawesome.com/releases/v4.7.0/css/font-awesome.css'
+                    }
+                ];
+                
+                let sourceIndex = 0;
+                function tryLoadFontAwesome() {
+                    if (sourceIndex < cdnSources.length) {
+                        const source = cdnSources[sourceIndex];
+                        link.href = source.href;
+                        if (source.integrity) {
+                            link.integrity = source.integrity;
+                        }
+                        link.onerror = function() {
+                            sourceIndex++;
+                            tryLoadFontAwesome();
+                        };
+                    }
+                }
+                tryLoadFontAwesome();
             }
-            link.rel = 'stylesheet';
-
-            // add link tag to head section
+            
             document.getElementsByTagName('head')[0].appendChild(link);
         }
 
-        // load js files from CDN if local node_modules fail
+        // Enhanced JS loading with fallbacks
         function loadJsFromCDN(js) {
             if (js === 'waypoints.js') {
-                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js"><\/script>');
+                document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.js" integrity="sha512-ZKNVEa7gi0Dz4Rq9jXcySgcPiK+5f01CqW+ZoKLLKr9VMXuCsw3RjWiv8ZpIOa0hxO79np7Ec8DDWALM0bDOaQ==" crossorigin="anonymous"><\/script>');
             } else if (js === 'jquery.js') {
                 document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
             }
         }
+
+        // Preload critical images for better performance
+        function preloadCriticalImages() {
+            const criticalImages = [
+                'img/logo.png',
+                'img/levi_portrait_low.png',
+                'img/agi_portrait.png',
+                'img/bg.jpg'
+            ];
+            
+            criticalImages.forEach(function(src) {
+                const link = document.createElement('link');
+                link.rel = 'preload';
+                link.as = 'image';
+                link.href = src;
+                document.head.appendChild(link);
+            });
+        }
+        
+        // Image error fallback handler
+        function handleImageError(img) {
+            if (img.src.includes('levi_portrait_low.png')) {
+                // Fallback for Levi's portrait
+                img.style.display = 'none';
+                console.warn('Failed to load Levi portrait image');
+            } else if (img.src.includes('agi_portrait.png')) {
+                // Fallback for Ági's portrait
+                img.style.display = 'none';
+                console.warn('Failed to load Ági portrait image');
+            }
+        }
     </script>
 
+    <!-- Preload critical resources -->
+    <link rel="preload" href="css/styles.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" as="style" crossorigin>
+
+    <!-- CSS Files with enhanced error handling -->
     <link rel="stylesheet" href="css/normalize.min.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/jquery.fancybox.css">
@@ -62,9 +150,31 @@
     <link rel="stylesheet" href="css/styles.min.css">
     <link rel="stylesheet" href="css/queries.css">
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
-    <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css"
-        onerror="loadCssFromCDN('font-awesome.css')">
+    
+    <!-- FontAwesome with multiple fallbacks -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" 
+          integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" 
+          crossorigin="anonymous" 
+          onerror="loadCssFromCDN('font-awesome.css')">
+    <!-- Local FontAwesome fallback -->
+    <link rel="stylesheet" href="fonts/fontawesome-webfont.css" onerror="this.remove()">
+    
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    
+    <!-- Initialize critical functions -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            preloadCriticalImages();
+            
+            // Add error handlers to all images
+            const images = document.querySelectorAll('img');
+            images.forEach(function(img) {
+                img.onerror = function() {
+                    handleImageError(this);
+                };
+            });
+        });
+    </script>
 </head>
 
 <body id="top">
@@ -76,7 +186,7 @@
         <section class="navigation">
             <header data-stellar-background-ratio="0.5">
                 <div class="header-content">
-                    <div class="logo"><a href="#"><img src="img/logo.png" alt="Logo"></a></div>
+                    <div class="logo"><a href="#"><img src="img/logo.png" alt="Ági & Levi Wedding Logo" loading="eager" decoding="sync" width="auto" height="19" onload="this.style.opacity=1" onerror="this.style.display='none'" data-critical="true"></a></div>
                     <div class="header-nav">
                         <nav>
                             <ul class="primary-nav">
@@ -122,7 +232,15 @@
             </div>
             <div class="row">
                 <div class="col-md-3 hidden-sm hidden-xs">
-                    <img src="img/levi_portrait_low.png" class="wp1" style="height: 350px; width: auto;">
+                    <img src="img/levi_portrait_low.png" 
+                         class="wp1" 
+                         style="height: 350px; width: auto;" 
+                         alt="Levi portré"
+                         loading="lazy"
+                         decoding="async"
+                         onload="this.style.opacity=1"
+                         onerror="handleImageError(this)"
+                         data-critical="true">
                 </div>
                 <div class="col-md-6">
                     <p>Kedves Családunk és Barátaink!</p>
@@ -134,18 +252,41 @@
                     <p>Szeretettel, <br>Ági és Levi </br> </p>
                 </div>
                 <div class="col-md-3 hidden-sm hidden-xs">
-                    <img src="img/agi_portrait.png" class="wp2" style="height: 350px; width: auto;">
+                    <img src="img/agi_portrait.png" 
+                         class="wp2" 
+                         style="height: 350px; width: auto;" 
+                         alt="Ági portré"
+                         loading="lazy"
+                         decoding="async"
+                         onload="this.style.opacity=1"
+                         onerror="handleImageError(this)"
+                         data-critical="true">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg">
-                    <img src="img/levi_portrait_low.png" class="wp8" style="height: 350px; width: auto;">
+                    <img src="img/levi_portrait_low.png" 
+                         class="wp8" 
+                         style="height: 350px; width: auto;" 
+                         alt="Levi portré"
+                         loading="lazy"
+                         decoding="async"
+                         onload="this.style.opacity=1"
+                         onerror="handleImageError(this)"
+                         data-critical="true">
                 </div>
                 <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg">
-                    <img src="img/agi_portrait.png" class="wp9" style="height: 350px; width: auto;">
+                    <img src="img/agi_portrait.png" 
+                         class="wp9" 
+                         style="height: 350px; width: auto;" 
+                         alt="Ági portré"
+                         loading="lazy"
+                         decoding="async"
+                         onload="this.style.opacity=1"
+                         onerror="handleImageError(this)"
+                         data-critical="true">
                 </div>
             </div>
-        </div>
         </div>
     </section>
 
@@ -242,10 +383,6 @@
                     </a>
                 </div>
             </div>
-            <!--<div class="row">
-            <div class="col-xs-12 section-border section-padding">
-            </div>
-        </div>-->
         </div>
 
         <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
@@ -323,7 +460,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 image-padding">
-                    <a class="fancybox" rel="group" href="img/eng_pics/PIC25.jpeg">
+                    <a class="fancybox" rel="group" href="img/eng_pics/PIC25.jpg">
                         <div class="img-wrap">
                             <div class="overlay">
                                 <i class="fa fa-search"></i>
@@ -345,7 +482,7 @@
                     </a>
                 </div>
                 <div class="col-md-4 image-padding">
-                    <a class="fancybox" rel="group" href="img/eng_pics/PIC26.jpeg">
+                    <a class="fancybox" rel="group" href="img/eng_pics/PIC26.jpg">
                         <div class="img-wrap">
                             <div class="overlay">
                                 <i class="fa fa-search"></i>
@@ -399,7 +536,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="row hidden-lg hidden-md hidden-xs">
+            <div class="row hidden-sm">
                 <div class="col-xs-12 section-border section-padding"></div>
             </div>
         </div>
