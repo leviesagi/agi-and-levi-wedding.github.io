@@ -1,5 +1,71 @@
 $(document).ready(function () {
 
+    /***************** Enhanced Video Player ******************/
+    
+    // Improved mobile video detection and initialization
+    function initVideoPlayer() {
+        const $player = $('.player');
+        if ($player.length === 0) return;
+        
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        const isTablet = /(tablet|ipad|playbook|silk)|(android(?!.*mobi))/i.test(navigator.userAgent);
+        
+        if (isMobile && !isTablet) {
+            // For mobile devices, show a fallback image instead of video
+            const videoSection = $('#video-bg');
+            const fallbackImage = 'img/bg.jpg'; // Using existing background image
+            
+            videoSection.css({
+                'background-image': 'url(' + fallbackImage + ')',
+                'background-size': 'cover',
+                'background-position': 'center center',
+                'background-repeat': 'no-repeat'
+            });
+            
+            // Hide the video player on mobile
+            $player.hide();
+        } else {
+            // For desktop and tablets, initialize the video player
+            try {
+                $player.YTPlayer({
+                    videoURL: 'https://youtu.be/9kRMeRDSqfI',
+                    containment: '#video-bg',
+                    autoPlay: true,
+                    mute: true,
+                    showControls: false,
+                    startAt: 80,
+                    stopAt: 259,
+                    opacity: 1,
+                    quality: 'highres',
+                    optimizeDisplay: true,
+                    onReady: function(player) {
+                        console.log('Video player ready');
+                    },
+                    onError: function(player, error) {
+                        console.log('Video player error:', error);
+                        // Fallback to background image on error
+                        $('#video-bg').css({
+                            'background-image': 'url(img/bg.jpg)',
+                            'background-size': 'cover',
+                            'background-position': 'center center'
+                        });
+                    }
+                });
+            } catch (error) {
+                console.log('YTPlayer initialization failed:', error);
+                // Fallback to background image
+                $('#video-bg').css({
+                    'background-image': 'url(img/bg.jpg)',
+                    'background-size': 'cover',
+                    'background-position': 'center center'
+                });
+            }
+        }
+    }
+    
+    // Initialize video player
+    initVideoPlayer();
+
     /***************** Waypoints ******************/
 
     $('.wp1').waypoint(function () {
@@ -160,10 +226,6 @@ $(document).ready(function () {
         share_bar[i].innerHTML = html;
         share_bar[i].style.display = 'inline-block';
     }
-
-    /********************** Embed youtube video *********************/
-    $('.player').YTPlayer();
-
 
     /********************** Toggle Map Content **********************/
     $('#btn-show-map').click(function () {
