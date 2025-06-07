@@ -105,24 +105,6 @@
                 document.write('<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"><\/script>');
             }
         }
-
-        // Preload critical images for better performance
-        function preloadCriticalImages() {
-            const criticalImages = [
-                'img/logo.png',
-                'img/levi_portrait_low.png',
-                'img/agi_portrait.png',
-                'img/bg.jpg'
-            ];
-            
-            criticalImages.forEach(function(src) {
-                const link = document.createElement('link');
-                link.rel = 'preload';
-                link.as = 'image';
-                link.href = src;
-                document.head.appendChild(link);
-            });
-        }
         
         // Image error fallback handler
         function handleImageError(img) {
@@ -164,7 +146,6 @@
     <!-- Initialize critical functions -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            preloadCriticalImages();
             
             // Add error handlers to all images
             const images = document.querySelectorAll('img');
@@ -236,8 +217,6 @@
                          class="wp1" 
                          style="height: 350px; width: auto;" 
                          alt="Levi portré"
-                         loading="lazy"
-                         decoding="async"
                          onload="this.style.opacity=1"
                          onerror="handleImageError(this)"
                          data-critical="true">
@@ -256,9 +235,6 @@
                          class="wp2" 
                          style="height: 350px; width: auto;" 
                          alt="Ági portré"
-                         loading="lazy"
-                         decoding="async"
-                         onload="this.style.opacity=1"
                          onerror="handleImageError(this)"
                          data-critical="true">
                 </div>
@@ -267,11 +243,8 @@
                 <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg">
                     <img src="img/levi_portrait_low.png" 
                          class="wp8" 
-                         style="height: 350px; width: auto;" 
+                         style="height: 350px; width: auto; margin-left: -10%;" 
                          alt="Levi portré"
-                         loading="lazy"
-                         decoding="async"
-                         onload="this.style.opacity=1"
                          onerror="handleImageError(this)"
                          data-critical="true">
                 </div>
@@ -280,9 +253,6 @@
                          class="wp9" 
                          style="height: 350px; width: auto;" 
                          alt="Ági portré"
-                         loading="lazy"
-                         decoding="async"
-                         onload="this.style.opacity=1"
                          onerror="handleImageError(this)"
                          data-critical="true">
                 </div>
@@ -784,25 +754,6 @@
     <script src="js/jquery.mb.YTPlayer.min.js"></script>
     <script src="js/vendor/ouical.js"></script>
     <script src="js/scripts.min.js"></script>
-    
-    <!-- Simple mobile animation fallback -->
-    <script>
-        // Simple fallback for mobile devices
-        $(document).ready(function() {
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-            if (isMobile) {
-                // Add a simple fallback that shows elements after a delay if waypoints don't work
-                setTimeout(function() {
-                    $('.wp1, .wp2, .wp3, .wp4, .wp5, .wp6, .wp7, .wp8, .wp9').each(function() {
-                        if ($(this).css('visibility') === 'hidden') {
-                            $(this).css('visibility', 'visible').addClass('animated fadeInUp');
-                        }
-                    });
-                }, 2000);
-            }
-        });
-    </script>
 </body>
 
 </html>
