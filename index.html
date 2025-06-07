@@ -18,16 +18,34 @@
     <meta property="og:title" content="Ági & Levi esküvő">
     <meta property="og:description" content="Szeretettel meghívunk titeket a nagy napunkra.">
     <meta property="og:type" content="website">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="Á+L" />
-    <link rel="manifest" href="/site.webmanifest" />
-    <link rel="mask-icon" href="/apple-touch-icon.png" color="#5bbad5">
+    <meta property="og:image" content="/apple-touch-icon.png">
+    
+    <!-- Comprehensive Favicon Support for All Browsers and Devices -->
+    <!-- Standard favicon for IE and old browsers -->
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    
+    <!-- Modern favicon support -->
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#89a450">
+    
+    <!-- Android Chrome Icons -->
+    <link rel="icon" type="image/png" sizes="192x192" href="android-chrome-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    
+    <!-- Microsoft Tiles -->
+    <meta name="msapplication-config" content="browserconfig.xml">
+    
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="site.webmanifest">
+    <meta name="apple-mobile-web-app-title" content="Á+L">
 
     <script>
         // load css files from CDN if local node_modules fail
@@ -650,6 +668,25 @@
     <script src="js/jquery.mb.YTPlayer.min.js"></script>
     <script src="js/vendor/ouical.js"></script>
     <script src="js/scripts.min.js"></script>
+    
+    <!-- Simple mobile animation fallback -->
+    <script>
+        // Simple fallback for mobile devices
+        $(document).ready(function() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            if (isMobile) {
+                // Add a simple fallback that shows elements after a delay if waypoints don't work
+                setTimeout(function() {
+                    $('.wp1, .wp2, .wp3, .wp4, .wp5, .wp6, .wp7, .wp8, .wp9').each(function() {
+                        if ($(this).css('visibility') === 'hidden') {
+                            $(this).css('visibility', 'visible').addClass('animated fadeInUp');
+                        }
+                    });
+                }, 2000);
+            }
+        });
+    </script>
 </body>
 
 </html>

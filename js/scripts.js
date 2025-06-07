@@ -2,50 +2,54 @@ $(document).ready(function () {
 
     /***************** Waypoints ******************/
 
+    // Simple mobile detection for offset adjustment
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+    const mobileOffset = isMobile ? '90%' : '75%';
+
     $('.wp1').waypoint(function () {
         $('.wp1').addClass('animated fadeInLeft');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
     $('.wp2').waypoint(function () {
         $('.wp2').addClass('animated fadeInRight');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
     $('.wp3').waypoint(function () {
         $('.wp3').addClass('animated fadeInLeft');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
     $('.wp4').waypoint(function () {
         $('.wp4').addClass('animated fadeInRight');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
     $('.wp5').waypoint(function () {
         $('.wp5').addClass('animated fadeInLeft');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
     $('.wp6').waypoint(function () {
         $('.wp6').addClass('animated fadeInRight');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
     $('.wp7').waypoint(function () {
         $('.wp7').addClass('animated fadeInUp');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
     $('.wp8').waypoint(function () {
         $('.wp8').addClass('animated fadeInLeft');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
     $('.wp9').waypoint(function () {
         $('.wp9').addClass('animated fadeInRight');
     }, {
-        offset: '75%'
+        offset: mobileOffset
     });
 
     /***************** Initiate Flexslider ******************/
